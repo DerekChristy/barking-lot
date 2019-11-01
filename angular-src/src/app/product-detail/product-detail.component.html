@@ -1,0 +1,99 @@
+<div class="container">
+  <div class="card col-12 col-lg-7 mt-3">
+    <div class="row no-gutters">
+      <div class="col-12 col-md-7 col-lg-7">
+        <img src="{{ dog.image }}" class="card-img" alt="{{ dog.image }}" />
+      </div>
+      <div class="col-12 col-md-5 col-lg-5">
+        <div class="card-body">
+          <h5 class="card-title">{{ dog.breed | titlecase }}</h5>
+          <hr />
+          <p class="card-text">
+            <strong>Details</strong> <br />
+            Breed - {{ dog.breed }} <br />
+            DOB - {{ dog.dob | date }} <br />
+            Sex - {{ dog.sex | titlecase }} <br />
+          </p>
+          <p class="card-text">
+            <strong>Address</strong><br />
+            {{ dog.street | titlecase }}, <br />
+            {{ dog.city | titlecase }}, <br />
+            {{ dog.state | titlecase }}, <br />
+            {{ dog.pincode }}<br />
+          </p>
+          <p class="card-text">
+            <strong>Sold by</strong><br />
+            {{ user.firstName | titlecase }} {{ user.lastName | titlecase }}
+            <br />
+          </p>
+          <p class="h4">{{ dog.amount | currency: 'INR' }}</p>
+          <div>
+            <button mat-raised-button color="primary" (click)="buy()">
+              <mat-icon class="mr-2">card_giftcard</mat-icon>Buy
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- <mat-card class="col-12 col-lg-4">
+    <div class="row gutters">
+      <mat-card-header>
+        <mat-card-title>{{ dog.breed | titlecase }}</mat-card-title>
+        <mat-card-subtitle>{{ dog.dob | date }} </mat-card-subtitle>
+      </mat-card-header>
+      <img class="card-img" src="{{ dog.image }}" alt="" />
+      <mat-card-content>
+        <p class="h5">&#8377;{{ dog.amount }}</p>
+        <div class="mat-body">
+          <p class="mat-body-2">Details</p>
+          <p class="ml-2">
+            Breed - {{ dog.breed }} <br />
+            DOB - {{ dog.dob | date }} <br />
+            Sex - {{ dog.sex }} <br />
+          </p>
+        </div>
+        <div>
+          <p class="mat-body-2">Address</p>
+          <p class="ml-2">
+            {{ dog.street }}, <br />
+            {{ dog.city }}, <br />
+            {{ dog.state }}, <br />
+            {{ dog.pincode }}<br />
+          </p>
+        </div>
+      </mat-card-content>
+    </div>
+    <mat-card-actions>
+      <button mat-raised-button color="primary">
+        <mat-icon class="mr-2">card_giftcard</mat-icon>Buy
+      </button>
+      <button
+        *ngIf="
+          user.cartItems != null && !user.cartItems.includes(this.dogId);
+          else removeItem
+        "
+        mat-flat-button
+        (click)="addToCart()"
+      >
+        <mat-icon class="ml-1 mr-2 bg-warn">add_shopping_cart</mat-icon>Add to
+        cart
+      </button>
+      <ng-template #removeItem>
+        <button mat-flat-button (click)="addToCart()">
+          <mat-icon class="mr-2">shopping_cart</mat-icon>
+          <p class="d-inline text-success">Added to cart</p>
+        </button>
+      </ng-template> -->
+  <!-- <button *ngIf="true" mat-icon-button (click)="unFav()">
+        <mat-icon class="text-danger">favorite</mat-icon>
+      </button>
+      <ng-template #unfav>
+        <button mat-icon-button (click)="addFav()">
+          <mat-icon>favorite_border</mat-icon>
+        </button>
+      </ng-template>
+      <button class="ml-2" mat-icon-button><mat-icon>share</mat-icon></button>
+    </mat-card-actions>
+  </mat-card>-->
+</div>

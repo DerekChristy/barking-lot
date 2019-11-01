@@ -1,0 +1,12 @@
+mat-card {
+  margin: 8px;
+  width: 14rem;
+  flex: 1 1 0;
+}
+
+.showcase {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+}

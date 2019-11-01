@@ -1,0 +1,67 @@
+<mat-toolbar color="primary" class="navbar">
+  <div>
+    <button mat-icon-button (click)="sidenav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <h1 class="brand">Pet Store</h1>
+  </div>
+  <div *ngIf="!this.auth.loggedIn(); else navOptions">
+    <a mat-icon-button [routerLink]="['/login']">Login</a>
+  </div>
+  <ng-template #navOptions>
+    <div>
+      <a mat-icon-button routerLink="/products">
+        <!-- TODO user uploaded pets and liked pets component -->
+        <mat-icon>home</mat-icon>
+      </a>
+      <a class="mat-body">Hello, {{ userService.user.firstName }}</a>
+      <!-- <a mat-icon-button>
+        <mat-icon
+          [matBadge]="itemCount"
+          [matBadgeHidden]="itemCount < 1"
+          matBadgeColor="warn"
+          matBadgeSize="small"
+          matBadgePosition="below after"
+        >
+          shopping_cart
+        </mat-icon>
+      </a> -->
+      <a mat-icon-button (click)="logout()">
+        Logout
+      </a>
+    </div>
+  </ng-template>
+</mat-toolbar>
+
+<mat-sidenav-container>
+  <mat-sidenav mode="over" #sidenav>
+    <mat-nav-list>
+      <mat-list-item>
+        <mat-icon matListIcon>account_circle</mat-icon>
+        <p matLine>
+          {{ userService.user.firstName }} {{ userService.user.lastName }}
+        </p>
+      </mat-list-item>
+      <hr />
+      <mat-list-item
+        routerLink="/products"
+        routerLinkActive="active bg-info"
+        (click)="sidenav.toggle()"
+      >
+        <mat-icon matListIcon>explore</mat-icon>
+        <p matLine>Explore</p>
+      </mat-list-item>
+      <mat-list-item
+        [routerLink]="['/create']"
+        routerLinkActive="active bg-info"
+        (click)="sidenav.toggle()"
+      >
+        <mat-icon matListIcon>attach_money</mat-icon>
+        <p matLine>Sell</p>
+      </mat-list-item>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

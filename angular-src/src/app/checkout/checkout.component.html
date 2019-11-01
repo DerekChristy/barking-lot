@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="row">
+    <div class="card mx-auto">
+      <div class="card-body">
+        <div class="h4">{{ dog.breed }}</div>
+        <img src="{{ dog.image }}" style="background-size: cover;" />
+        <h4 class="m-2">{{ dog.amount | currency: 'INR' }}</h4>
+        <div #paypal></div>
+      </div>
+    </div>
+  </div>
+</div>
